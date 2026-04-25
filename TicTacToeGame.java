@@ -12,7 +12,9 @@ public class TicTacToeGame {
         tossToStart();
         showBoard();
         int slot = getUserInput();
-        System.out.println("Selected Slot: " + slot);
+        int row = (slot - 1) / 3;
+        int col = (slot - 1) % 3;
+        System.out.println("Selected Slot: " + slot + " -> Index: (" + row + ", " + col + ")");
     }
 
     /**
