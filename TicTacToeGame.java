@@ -3,9 +3,13 @@ import java.util.Scanner;
 public class TicTacToeGame {
     static char[][] board = new char[3][3];
 
+    static char playerSymbol, computerSymbol;
+    static int currentPlayer; // 1 for Player, 2 for Computer
+
     public static void main(String[] args) {
         System.out.println("Welcome to Tic Tac Toe Game");
         createBoard();
+        tossToStart();
         showBoard();
     }
 
@@ -32,5 +36,25 @@ public class TicTacToeGame {
             }
             System.out.println();
         }
+    }
+    /**
+     * UC2: Toss to Decide First Player and Symbol
+     * Randomly decides which player starts and assigns symbols.
+     */
+    public static void tossToStart() {
+        int toss = (int) (Math.random() * 2); // 0 or 1
+        if (toss == 0) {
+            System.out.println("Toss Result: Player starts first!");
+            currentPlayer = 1;
+            playerSymbol = 'X';
+            computerSymbol = 'O';
+        } else {
+            System.out.println("Toss Result: Computer starts first!");
+            currentPlayer = 2;
+            playerSymbol = 'O';
+            computerSymbol = 'X';
+        }
+        System.out.println("Player Symbol: " + playerSymbol);
+        System.out.println("Computer Symbol: " + computerSymbol);
     }
 }
