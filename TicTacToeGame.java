@@ -11,6 +11,8 @@ public class TicTacToeGame {
         createBoard();
         tossToStart();
         showBoard();
+        int slot = getUserInput();
+        System.out.println("Selected Slot: " + slot);
     }
 
     /**
@@ -56,5 +58,15 @@ public class TicTacToeGame {
         }
         System.out.println("Player Symbol: " + playerSymbol);
         System.out.println("Computer Symbol: " + computerSymbol);
+    }
+
+    /**
+     * UC3: Accept User Slot Input (1–9)
+     * Reads a slot number from the user.
+     */
+    public static int getUserInput() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter your move (1-9): ");
+        return sc.nextInt();
     }
 }
