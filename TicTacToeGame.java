@@ -11,10 +11,19 @@ public class TicTacToeGame {
         createBoard();
         tossToStart();
         showBoard();
-        int slot = getUserInput();
-        int row = (slot - 1) / 3;
-        int col = (slot - 1) % 3;
-        System.out.println("Selected Slot: " + slot + " -> Index: (" + row + ", " + col + ")");
+        while (true) {
+            int slot = getUserInput();
+            if (validateMove(slot)) {
+                int row = (slot - 1) / 3;
+                int col = (slot - 1) % 3;
+                board[row][col] = playerSymbol;
+                System.out.println("Move Accepted!");
+                break;
+            } else {
+                System.out.println("Invalid Move! Cell occupied or out of bounds (1-9). Try again.");
+            }
+        }
+        showBoard();
     }
 
     /**
@@ -70,5 +79,16 @@ public class TicTacToeGame {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter your move (1-9): ");
         return sc.nextInt();
+    }
+
+    /**
+     * UC5: Validate User Move
+     * Checks if the slot is within range and the cell is empty.
+     */
+    public static boolean validateMove(int slot) {
+        if (slot < 1 || slot > 9) return false;
+        int row = (slot - 1) / 3;
+        int col = (slot - 1) % 3;
+        return board[row][col] == '-';
     }
 }
